@@ -10,6 +10,15 @@ export interface IProductDetail extends Document {
     updatedAt: Date;
 }
 const ProductDetailSchema = new Schema({
+    price:{
+        type: String,
+        required: true,
+    },
+    image:{
+        type: String,
+        required:true
+    },
+    maxbuycount:{type:String,required:true},
     colorid: [{ type: [], required: true }],
     sizeid: [{ type: [], required: true }],
     lengthid: [{ type: [], required: true }],

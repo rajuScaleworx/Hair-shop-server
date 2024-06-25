@@ -14,11 +14,6 @@ export interface IProduct extends Document {
 }
 
 const ProductSchema = new Schema({
-    productid: {
-        type: String,
-        required: true,
-        unique: true
-    },
     name: {
         type: String,
         required: true,
@@ -43,6 +38,13 @@ const ProductSchema = new Schema({
         type: Types.ObjectId,
         required: true,
         ref: "productcategory"
+    },
+    productCollection_typeid:{
+        type: String,
+        ref:"collection_type"
+    },
+    productCollection_type:{
+        type: String
     },
     active: {
         type: Boolean,

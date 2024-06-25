@@ -1,7 +1,7 @@
 import { Request, Response, response} from 'express';
-import ColorService from '../services/colorService';
+import CollectionService from '../services/collectionTypeService';
 import * as bcrypt from 'bcrypt';
-const colorService= new ColorService();
+const collectionService= new CollectionService();
 class CollectiontypeController {
 
     public async Addcollectiontype(req:Request,res:Response){
@@ -14,7 +14,7 @@ class CollectiontypeController {
                     createdBy:user._id,
                     active:true,
                 }
-                const response = await  colorService.addColor(addObject)
+                const response = await  collectionService.addColor(addObject)
                 res.status(response.statusCode).send(response)
 
             }
@@ -36,7 +36,7 @@ class CollectiontypeController {
                 const addObject={
                    id:req.params.id
                 }
-                const response = await  colorService.RemoveColor(addObject)
+                const response = await  collectionService.RemoveCollection(addObject)
                 res.status(response.statusCode).send(response)
 
             }
@@ -53,8 +53,20 @@ class CollectiontypeController {
     }
     public async getallcollectiontype(req:Request,res:Response){
         try{
-            const response = await colorService.getcolor()
+            const response = await collectionService.getcolor()
             res.status(response.statusCode).send(response)
+        }
+        catch(error){
+            res.status(500).json({
+                error
+            }) 
+        }
+    }
+    public async getCollectiontypewithproduct(req:Request,res:Response){
+        try{
+            const response = await collectionService.getCollectiontypewithproduct()
+            res.status(response.statusCode).send(response)
+
         }
         catch(error){
             res.status(500).json({
