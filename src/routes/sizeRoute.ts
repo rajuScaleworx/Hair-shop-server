@@ -9,4 +9,6 @@ export const sizeroute= express.Router()
 const jsonparser=bodyParser.json()
 sizeroute.post('/size',jsonparser,authorized,sizeController.AddSize)
 sizeroute.delete('/size/:sizeid',jsonparser,authorized,sizeController.RemoveSize)
-sizeroute.get('/size',sizeController.getallsize)
+sizeroute.get('/size',sizeController.getallsize);
+sizeroute.post('/size_update',jsonparser,authorized,sizeController.updateSize);
+

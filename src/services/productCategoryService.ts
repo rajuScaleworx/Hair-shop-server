@@ -53,6 +53,21 @@ class ProductCategoryService implements IAuthService {
             throw error
         }
     }
+    // updateProductCategory
+    public async updateProductCategory(addObject:any){
+        try{
+            const addlengthresponse = await ProductCategoryModal.findByIdAndUpdate(addObject.id,{name:addObject.name,producttype:addObject.producttype,producttypeid:addObject.producttypeid})
+            if(addlengthresponse){
+                return { statusCode: 200, message: 'ProductCategory Update successfully!'}
+            }
+            else{
+                return { statusCode: 400, message: 'ProductCategory Update Failed!'}
+            }
+        }
+        catch(error){
+
+        }
+    }
 }
 
 export default ProductCategoryService;

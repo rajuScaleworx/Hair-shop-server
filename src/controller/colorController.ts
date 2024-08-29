@@ -10,7 +10,7 @@ class ColorController {
             if(user.role ==="admin"){
                 const addObject={
                     name:req.body.name,
-                    description:req.body.description,
+                    description:req.body.desc,
                     code:req.body.code,
                     createdBy:user._id,
                     active:true,
@@ -61,6 +61,30 @@ class ColorController {
             res.status(500).json({
                 error
             }) 
+        }
+    }
+    public async updateColor(req:Request,res:Response){
+        try{
+            const user:any=req.user
+            if(user.role ==="admin"){
+                const addObject={
+                   id:req.body.id,
+                   name:req.body.name,
+                   desc:req.body.desc,code:req.body.code
+                }
+                const response:any = await  colorService.updateColor(addObject)
+                res.status(response.statusCode).send(response)
+
+            }
+            else{
+                return res.status(403).send({statusCode:403,message:'You are not authorized to UPdate Size!'})
+            }            
+        }
+        catch(error:any){
+            console.log(error)
+            res.status(500).json({
+                error
+            })
         }
     }
 }

@@ -58,7 +58,7 @@ class ProductDetailController {
     }
     public async showFile  (req:Request, res:Response){
         try {
-            const file = path.resolve("uploads" + `/${req.params.filename}`);
+            const file = path.resolve("uploadsimage" + `/${req.params.filename}`);
             res.sendFile(file);
         }
         catch (err) {
@@ -69,7 +69,7 @@ class ProductDetailController {
         try {
             const fetchdata:any=await ProductDetailModal.findOne({productId:req.params.productid})
             if(fetchdata){
-                const file = path.resolve("uploads" + `/${fetchdata.image}`);
+                const file = path.resolve("uploadsimage" + `/${fetchdata.image}`);
                 res.sendFile(file);
             }
             else{

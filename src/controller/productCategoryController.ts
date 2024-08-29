@@ -35,7 +35,7 @@ class ProductCategoryController {
             const user:any=req.user
             if(user.role ==="admin"){
                 const addObject={
-                   lengthid:req.params.lengthid
+                   lengthid:req.params.categoryid
                 }
                 const response = await  productCategoryService.RemoveProductCategory(addObject)
                 res.status(response.statusCode).send(response)
@@ -61,6 +61,32 @@ class ProductCategoryController {
             res.status(500).json({
                 error
             }) 
+        }
+    }
+    public async updateProductCategory(req:Request,res:Response){
+        try{
+            const user:any=req.user
+            if(user.role ==="admin"){
+                const addObject={
+                   id:req.body.id,
+                   name:req.body.name,
+                   producttype:req.body.producttype,
+                   producttypeid:req.body.producttypeid,
+
+                }
+                const response:any = await  productCategoryService.updateProductCategory(addObject)
+                res.status(response.statusCode).send(response)
+
+            }
+            else{
+                return res.status(403).send({statusCode:403,message:'You are not authorized to UPdate ProductCategory!'})
+            }            
+        }
+        catch(error:any){
+            console.log(error)
+            res.status(500).json({
+                error
+            })
         }
     }
 }

@@ -10,3 +10,4 @@ const jsonparser=bodyParser.json()
 collectiontyperoute.post('/collectiontype',jsonparser,authorized,collectiontypeController.Addcollectiontype)
 collectiontyperoute.delete('/collectiontype/:id',jsonparser,authorized,collectiontypeController.Removecollectiontype)
 collectiontyperoute.get('/collectiontype',collectiontypeController.getCollectiontypewithproduct)
+collectiontyperoute.post('/collection_update',jsonparser,authorized,collectiontypeController.updateCollection);

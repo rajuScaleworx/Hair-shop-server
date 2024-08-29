@@ -44,6 +44,20 @@ class ProductTypeService implements IAuthService {
             throw error
         }
     }
+    public async updateProductType(addObject:any){
+        try{
+            const addlengthresponse = await ProductTypeModal.findByIdAndUpdate(addObject.id,{name:addObject.name})
+            if(addlengthresponse){
+                return { statusCode: 200, message: 'ProductType Update successfully!'}
+            }
+            else{
+                return { statusCode: 400, message: 'ProductType Update Failed!'}
+            }
+        }
+        catch(error){
+
+        }
+    }
     public async getallProductType (){
         try{
             const getProductTyperesponse = await ProductTypeModal.find();

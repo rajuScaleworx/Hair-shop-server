@@ -10,7 +10,7 @@ class CollectiontypeController {
             if(user.role ==="admin"){
                 const addObject={
                     name:req.body.name,
-                    description:req.body.description,
+                    description:req.body.desc,
                     createdBy:user._id,
                     active:true,
                 }
@@ -19,7 +19,7 @@ class CollectiontypeController {
 
             }
             else{
-                return res.status(403).send({statusCode:403,message:'You are not authorized to add Color!'})
+                return res.status(403).send({statusCode:403,message:'You are not authorized to add Collection!'})
             }            
         }
         catch(error:any){
@@ -41,7 +41,7 @@ class CollectiontypeController {
 
             }
             else{
-                return res.status(403).send({statusCode:403,message:'You are not authorized to add Color!'})
+                return res.status(403).send({statusCode:403,message:'You are not authorized to add Collection!'})
             }            
         }
         catch(error:any){
@@ -60,6 +60,29 @@ class CollectiontypeController {
             res.status(500).json({
                 error
             }) 
+        }
+    }
+    public async updateCollection(req:Request,res:Response){
+        try{
+            const user:any=req.user
+            if(user.role ==="admin"){
+                const addObject={
+                   id:req.body.id,
+                   name:req.body.name
+                }
+                const response:any = await  collectionService.updateCollection(addObject)
+                res.status(response.statusCode).send(response)
+
+            }
+            else{
+                return res.status(403).send({statusCode:403,message:'You are not authorized to remove Collection!'})
+            }            
+        }
+        catch(error:any){
+            console.log(error)
+            res.status(500).json({
+                error
+            })
         }
     }
     public async getCollectiontypewithproduct(req:Request,res:Response){

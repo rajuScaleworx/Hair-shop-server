@@ -39,7 +39,7 @@ class SizeService implements IAuthService {
     }
     public async RemoveSize (addObject:any){
         try{
-            const addsizeresponse = await SizeModal.findByIdAndDelete(addObject.lengthid)
+            const addsizeresponse = await SizeModal.findByIdAndDelete(addObject.sizeid)
             if(addsizeresponse){
                 return { statusCode: 200, message: 'Size Remove successfully!'}
             }
@@ -58,6 +58,21 @@ class SizeService implements IAuthService {
         }
         catch(error){
             throw error
+        }
+    }
+    // updateSize
+    public async updateSize(addObject:any){
+        try{
+            const addlengthresponse = await SizeModal.findByIdAndUpdate(addObject.id,{name:addObject.name,description:addObject.desc,code:addObject.code})
+            if(addlengthresponse){
+                return { statusCode: 200, message: 'Size Update successfully!'}
+            }
+            else{
+                return { statusCode: 400, message: 'Size Update Failed!'}
+            }
+        }
+        catch(error){
+
         }
     }
 }

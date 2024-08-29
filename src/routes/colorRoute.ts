@@ -10,3 +10,4 @@ const jsonparser=bodyParser.json()
 colorroute.post('/color',jsonparser,authorized,colorController.AddColor)
 colorroute.delete('/color/:colorid',jsonparser,authorized,colorController.RemoveColor)
 colorroute.get('/color',colorController.getallcolor)
+colorroute.post('/color_update',jsonparser,authorized,colorController.updateColor);

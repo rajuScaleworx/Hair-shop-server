@@ -65,6 +65,21 @@ class ColorService implements IAuthService {
             throw error
         }
     }
+    // updateColor
+    public async updateColor(addObject:any){
+        try{
+            const addlengthresponse = await ColorModal.findByIdAndUpdate(addObject.id,{name:addObject.name,description:addObject.desc,code:addObject.code})
+            if(addlengthresponse){
+                return { statusCode: 200, message: 'Color Update successfully!'}
+            }
+            else{
+                return { statusCode: 400, message: 'Color Update Failed!'}
+            }
+        }
+        catch(error){
+
+        }
+    }
 }
 
 export default ColorService;

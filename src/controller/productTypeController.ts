@@ -8,6 +8,7 @@ class ProductTypeController {
         try{
             const user:any=req.user
             if(user.role ==="admin"){
+                console.log(req.body)
                 const addObject={
                     name:req.body.name,
                     active:true,
@@ -32,9 +33,32 @@ class ProductTypeController {
             const user:any=req.user
             if(user.role ==="admin"){
                 const addObject={
-                   lengthid:req.params.lengthid
+                   lengthid:req.params.product_typeid
                 }
                 const response = await  productTypeService.RemoveProductType(addObject)
+                res.status(response.statusCode).send(response)
+
+            }
+            else{
+                return res.status(403).send({statusCode:403,message:'You are not authorized to remove ProductType!'})
+            }            
+        }
+        catch(error:any){
+            console.log(error)
+            res.status(500).json({
+                error
+            })
+        }
+    }
+    public async updateProductType(req:Request,res:Response){
+        try{
+            const user:any=req.user
+            if(user.role ==="admin"){
+                const addObject={
+                   id:req.body.id,
+                   name:req.body.name
+                }
+                const response:any = await  productTypeService.updateProductType(addObject)
                 res.status(response.statusCode).send(response)
 
             }
@@ -60,6 +84,7 @@ class ProductTypeController {
             }) 
         }
     }
+    
 }
 
 export default ProductTypeController;

@@ -12,6 +12,7 @@ import {razerpayroute} from './razerpayRouter';
 import {customerroute} from './customerRoute';
 import {customeraddressroute} from './customerAddRoute';
 import {orderroute} from './orderRoute';
+import {guestCartroute} from './guestCartRoute';
 export const routes = express.Router()
 
 routes.use(authroute);
@@ -27,6 +28,8 @@ routes.use(razerpayroute);
 routes.use(customerroute);
 routes.use(customeraddressroute);
 routes.use(orderroute);
+routes.use(guestCartroute);
+
 
 
 

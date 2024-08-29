@@ -10,3 +10,5 @@ const jsonparser=bodyParser.json()
 producttyperoute.post('/product_type',jsonparser,authorized,productTypeController.AddProductType)
 producttyperoute.delete('/product_type/:product_typeid',jsonparser,authorized,productTypeController.RemoveProductType)
 producttyperoute.get('/product_type',productTypeController.getallProductType);
+producttyperoute.post('/product_type_update',jsonparser,authorized,productTypeController.updateProductType);
+

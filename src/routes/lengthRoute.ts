@@ -10,3 +10,4 @@ const jsonparser=bodyParser.json()
 lengthroute.post('/length',jsonparser,authorized,lengthController.AddLength)
 lengthroute.delete('/length/:lengthid',jsonparser,authorized,lengthController.RemoveLength)
 lengthroute.get('/length',lengthController.getalllength)
+lengthroute.post('/length_update',jsonparser,authorized,lengthController.updateLength);

@@ -15,7 +15,7 @@ const ProductDetailSchema = new Schema({
         required: true,
     },
     image:{
-        type: String,
+        type: [],
         required:true
     },
     maxbuycount:{type:String,required:true},

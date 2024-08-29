@@ -60,6 +60,21 @@ class ColorService implements IAuthService {
             throw error
         }
     }
+    // updateLength
+    public async updateLength(addObject:any){
+        try{
+            const addlengthresponse = await LengthModal.findByIdAndUpdate(addObject.id,{name:addObject.name,description:addObject.desc,code:addObject.code})
+            if(addlengthresponse){
+                return { statusCode: 200, message: 'Size Update successfully!'}
+            }
+            else{
+                return { statusCode: 400, message: 'Size Update Failed!'}
+            }
+        }
+        catch(error){
+
+        }
+    }
 }
 
 export default ColorService;
