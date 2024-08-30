@@ -1,1 +1,1 @@
- Hair shop server
+server app
